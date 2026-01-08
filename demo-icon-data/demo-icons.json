@@ -1,0 +1,81 @@
+{
+  "custom_types": {
+    "steve": {
+      "icon": {
+        "type": "font-awesome",
+        "name": "user-secret",
+        "color": "#E74C3C"
+      }
+    },
+    "lobby": {
+      "icon": {
+        "type": "font-awesome",
+        "name": "door-open",
+        "color": "#03CEFC"
+      }
+    },
+    "elevator": {
+      "icon": {
+        "type": "font-awesome",
+        "name": "elevator",
+        "color": "#D67500"
+      }
+    },
+    "fifthfloor": {
+      "icon": {
+        "type": "font-awesome",
+        "name": "building",
+        "color": "#2ECC71"
+      }
+    },
+    "sixthfloor": {
+      "icon": {
+        "type": "font-awesome",
+        "name": "building",
+        "color": "#2ECC71"
+      }
+    },
+    "seventhfloor": {
+      "icon": {
+        "type": "font-awesome",
+        "name": "building",
+        "color": "#2ECC71"
+      }
+    },
+    "eighthfloor": {
+      "icon": {
+        "type": "font-awesome",
+        "name": "building",
+        "color": "#2ECC71"
+      }
+    },
+    "utdtool": {
+      "icon": {
+        "type": "font-awesome",
+        "name": "screwdriver-wrench",
+        "color": "#8E44AD"
+      }
+    },
+    "serverroom": {
+      "icon": {
+        "type": "font-awesome",
+        "name": "door-closed",
+        "color": "#FF3366"
+      }
+    },
+    "serverroomdoor": {
+      "icon": {
+        "type": "font-awesome",
+        "name": "key",
+        "color": "#E67E22"
+      }
+    },
+    "server": {
+      "icon": {
+        "type": "font-awesome",
+        "name": "server",
+        "color": "#C0392B"
+      }
+    }
+  }
+}

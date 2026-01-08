@@ -1,0 +1,284 @@
+{
+  "graph": {
+    "nodes": [
+      {
+        "id": "steve@badguys",
+        "kinds": [
+          "steve"
+        ],
+        "properties": {
+          "name": "steve",
+          "org": "badguys",
+          "objectid": "steve@badguys"
+        }
+      },
+      {
+        "id": "lobby@targetcompany",
+        "kinds": [
+          "lobby"
+        ],
+        "properties": {
+          "name": "lobby",
+          "org": "targetcompany",
+          "floor": "first",
+          "objectid": "lobby@targetcompany"
+        }
+      },
+      {
+        "id": "elevator@targetcompany",
+        "kinds": [
+          "elevator"
+        ],
+        "properties": {
+          "name": "elevator",
+          "org": "targetcompany",
+          "location": "lobby",
+          "objectid": "elevator@targetcompany"
+        }
+      },
+      {
+        "id": "fifthfloor@targetcompany",
+        "kinds": [
+          "fifthfloor"
+        ],
+        "properties": {
+          "name": "fifth floor",
+          "org": "targetcompany",
+          "floor": "five",
+          "objectid": "fifthfloor@targetcompany"
+        }
+      },
+      {
+        "id": "sixthfloor@targetcompany",
+        "kinds": [
+          "sixthfloor"
+        ],
+        "properties": {
+          "name": "sixth floor",
+          "org": "targetcompany",
+          "floor": "six",
+          "objectid": "sixthfloor@targetcompany"
+        }
+      },
+      {
+        "id": "seventhfloor@targetcompany",
+        "kinds": [
+          "seventhfloor"
+        ],
+        "properties": {
+          "name": "seventh floor",
+          "org": "targetcompany",
+          "floor": "seven",
+          "objectid": "seventhfloor@targetcompany"
+        }
+      },
+      {
+        "id": "eighthfloor@targetcompany",
+        "kinds": [
+          "eighthfloor"
+        ],
+        "properties": {
+          "name": "eighth floor",
+          "org": "targetcompany",
+          "floor": "eight",
+          "objectid": "eighthfloor@targetcompany"
+        }
+      },
+      {
+        "id": "utdtool@badguys",
+        "kinds": [
+          "utdtool"
+        ],
+        "properties": {
+          "name": "under the door tool",
+          "objectid": "utdtool@badguys"
+        }
+      },
+      {
+        "id": "serverroom@targetcompany",
+        "kinds": [
+          "serverroom"
+        ],
+        "properties": {
+          "name": "seventh floor server room",
+          "org": "targetcompany",
+          "objectid": "serverroom@targetcompany"
+        }
+      },
+      {
+        "id": "serverroomdoor@targetcompany",
+        "kinds": [
+          "serverroomdoor"
+        ],
+        "properties": {
+          "name": "server room door",
+          "org": "targetcompany",
+          "objectid": "serverroomdoor@targetcompany"
+        }
+      },
+      {
+        "id": "server@targetcompany",
+        "kinds": [
+          "server"
+        ],
+        "properties": {
+          "name": "server",
+          "org": "targetcompany",
+          "objectid": "server@targetcompany"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "kind": "CanAccess",
+        "start": {
+          "match_by": "id",
+          "value": "steve@badguys"
+        },
+        "end": {
+          "match_by": "id",
+          "value": "lobby@targetcompany"
+        },
+        "properties": {
+          "description": "steve can access the lobby",
+          "isTraversable": true
+        }
+      },
+      {
+        "kind": "Contains",
+        "start": {
+          "match_by": "id",
+          "value": "lobby@targetcompany"
+        },
+        "end": {
+          "match_by": "id",
+          "value": "elevator@targetcompany"
+        },
+        "properties": {
+          "description": "lobby contains an elevator",
+          "isTraversable": true
+        }
+      },
+      {
+        "kind": "CanAccess",
+        "start": {
+          "match_by": "id",
+          "value": "elevator@targetcompany"
+        },
+        "end": {
+          "match_by": "id",
+          "value": "fifthfloor@targetcompan"
+        },
+        "properties": {
+          "description": "elevator can access fifth floor",
+          "isTraversable": true
+        }
+      },
+      {
+        "kind": "CanAccess",
+        "start": {
+          "match_by": "id",
+          "value": "elevator@targetcompany"
+        },
+        "end": {
+          "match_by": "id",
+          "value": "sixthfloor@targetcompany"
+        },
+        "properties": {
+          "description": "elevator can access sixth floor",
+          "isTraversable": true
+        }
+      },
+      {
+        "kind": "CanAccess",
+        "start": {
+          "match_by": "id",
+          "value": "elevator@targetcompany"
+        },
+        "end": {
+          "match_by": "id",
+          "value": "seventhfloor@targetcompany"
+        },
+        "properties": {
+          "description": "elevator can access seventh floor",
+          "isTraversable": true
+        }
+      },
+      {
+        "kind": "CanAccess",
+        "start": {
+          "match_by": "id",
+          "value": "elevator@targetcompany"
+        },
+        "end": {
+          "match_by": "id",
+          "value": "eighthfloor@targetcompany"
+        },
+        "properties": {
+          "description": "elevator can access eighth floor",
+          "isTraversable": true
+        }
+      },
+      {
+        "kind": "Used",
+        "start": {
+          "match_by": "id",
+          "value": "seventhfloor@targetcompany"
+        },
+        "end": {
+          "match_by": "id",
+          "value": "utdtool@badguys"
+        },
+        "properties": {
+          "description": "used UTD tool on seventh floor",
+          "isTraversable": true
+        }
+      },
+      {
+        "kind": "Bypass",
+        "start": {
+          "match_by": "id",
+          "value": "utdtool@badguys"
+        },
+        "end": {
+          "match_by": "id",
+          "value": "serverroomdoor@targetcompany"
+        },
+        "properties": {
+          "description": "seventh floor server room door",
+          "isTraversable": true
+        }
+      },
+      {
+        "kind": "LeadsTo",
+        "start": {
+          "match_by": "id",
+          "value": "serverroomdoor@targetcompany"
+        },
+        "end": {
+          "match_by": "id",
+          "value": "serverroom@targetcompany"
+        },
+        "properties": {
+          "description": "server room door access",
+          "isTraversable": true
+        }
+      },
+      {
+        "kind": "Contains",
+        "start": {
+          "match_by": "id",
+          "value": "serverroom@targetcompany"
+        },
+        "end": {
+          "match_by": "id",
+          "value": "server@targetcompany"
+        },
+        "properties": {
+          "description": "server location",
+          "isTraversable": true
+        }
+      }
+    ]
+  }
+}

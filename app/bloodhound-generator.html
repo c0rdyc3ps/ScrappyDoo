@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BloodHound OpenGraph Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0e1a;
+            --bg-secondary: #131824;
+            --bg-tertiary: #1a1f2e;
+            --accent-red: #ff3366;
+            --accent-cyan: #00ffcc;
+            --accent-purple: #a855f7;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --border-color: #2d3748;
+            --shadow-glow: 0 0 20px rgba(255, 51, 102, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 51, 102, 0.1) 0%, transparent 50%);
+            animation: backgroundPulse 10s ease-in-out infinite;
+        }
+
+        @keyframes backgroundPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.9; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 968px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .panel {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-red), var(--accent-cyan));
+            opacity: 0.7;
+        }
+
+        .panel-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-red);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 0 3px rgba(0, 255, 204, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .array-input {
+            display: flex;
+            gap: 10px;
+        }
+
+        .array-input input {
+            flex: 1;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-purple));
+            color: white;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(255, 51, 102, 0.5);
+        }
+
+        .btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 0.8rem;
+        }
+
+        .actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .output-panel {
+            min-height: 400px;
+        }
+
+        pre {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 20px;
+            overflow-x: auto;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            max-height: 600px;
+            transition: all 0.3s ease;
+        }
+
+        pre[contenteditable="true"] {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 0 3px rgba(0, 255, 204, 0.1);
+            background: var(--bg-primary);
+        }
+
+        pre[contenteditable="true"]:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 255, 204, 0.2);
+        }
+
+        .validation-error {
+            color: var(--accent-red);
+            animation: shake 0.5s;
+        }
+
+        .validation-success {
+            color: var(--accent-cyan);
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .success-message {
+            background: rgba(0, 255, 204, 0.1);
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+            text-align: center;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .glow-text {
+            text-shadow: 0 0 10px currentColor;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="glow-text">BloodHound OpenGraph</h1>
+            <p class="subtitle">JSON Generator</p>
+        </header>
+
+        <div class="main-grid">
+            <div class="panel">
+                <h2 class="panel-title">Configure Graph Data</h2>
+                
+                <div class="section">
+                    <div class="section-title">Metadata</div>
+                    <div class="form-group">
+                        <label for="name">Graph Name</label>
+                        <input type="text" id="name" placeholder="My Active Directory Graph">
+                    </div>
+                    <div class="form-group">
+                        <label for="version">Version</label>
+                        <input type="number" id="version" value="5" min="1">
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Nodes</div>
+                    <div class="form-group">
+                        <label for="nodeLabel">Node Label</label>
+                        <input type="text" id="nodeLabel" placeholder="User">
+                    </div>
+                    <div class="form-group">
+                        <label for="nodeId">Node ID</label>
+                        <input type="text" id="nodeId" placeholder="user@domain.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="nodeProps">Node Properties (JSON)</label>
+                        <textarea id="nodeProps" placeholder='{"name": "John Doe", "enabled": true}'></textarea>
+                    </div>
+                    <button class="btn btn-secondary btn-small" onclick="addNode()">Add Node</button>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">Edges</div>
+                    <div class="form-group">
+                        <label for="edgeSource">Source Node ID</label>
+                        <input type="text" id="edgeSource" placeholder="user1@domain.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="edgeTarget">Target Node ID</label>
+                        <input type="text" id="edgeTarget" placeholder="group1@domain.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="edgeType">Relationship Type</label>
+                        <input type="text" id="edgeType" placeholder="MemberOf">
+                    </div>
+                    <div class="form-group">
+                        <label for="edgeProps">Edge Properties (JSON)</label>
+                        <textarea id="edgeProps" placeholder='{"isacl": false}'></textarea>
+                    </div>
+                    <button class="btn btn-secondary btn-small" onclick="addEdge()">Add Edge</button>
+                </div>
+
+                <div class="actions">
+                    <button class="btn btn-primary" onclick="generateJSON()">Generate JSON</button>
+                    <button class="btn btn-secondary" onclick="resetForm()">Reset</button>
+                </div>
+            </div>
+
+            <div class="panel output-panel">
+                <h2 class="panel-title">Generated OpenGraph JSON</h2>
+                <div style="background: rgba(0, 255, 204, 0.05); border: 1px solid var(--accent-cyan); border-radius: 6px; padding: 15px; margin-bottom: 20px; font-size: 0.85rem; line-height: 1.6;">
+                    <strong style="color: var(--accent-cyan);">⚡ How to Search Your Nodes:</strong><br>
+                    OpenGraph nodes are searchable ONLY via <strong>Cypher queries</strong> in BloodHound.<br><br>
+                    <strong>Example Query:</strong><br>
+                    <code style="background: var(--bg-tertiary); padding: 2px 6px; border-radius: 3px;">MATCH (n) RETURN n</code> - Show all nodes<br>
+                    <code style="background: var(--bg-tertiary); padding: 2px 6px; border-radius: 3px;">MATCH (n:lobby) RETURN n</code> - Find nodes by kind<br>
+                    <code style="background: var(--bg-tertiary); padding: 2px 6px; border-radius: 3px;">MATCH p=()-[]->() RETURN p</code> - Show all relationships
+                </div>
+                <div id="editWarning" style="display: none; background: rgba(255, 51, 102, 0.1); border: 1px solid var(--accent-red); border-radius: 6px; padding: 15px; margin-bottom: 20px; font-size: 0.85rem; line-height: 1.6;">
+                    <strong style="color: var(--accent-red);">⚠️ Edit Mode Active</strong><br>
+                    Click <strong>"💾 Update from JSON"</strong> before using the form to add more nodes/edges.<br>
+                    Otherwise, your manual edits will be overwritten!
+                </div>
+                <div style="display: flex; gap: 10px; margin-bottom: 10px; align-items: center;">
+                    <button class="btn btn-secondary btn-small" onclick="toggleEditMode()" id="editModeBtn">
+                        📝 Enable Editing
+                    </button>
+                    <button class="btn btn-secondary btn-small" onclick="validateJSON()" style="display: none;" id="validateBtn">
+                        ✓ Validate JSON
+                    </button>
+                    <button class="btn btn-secondary btn-small" onclick="updateFromJSON()" style="display: none;" id="updateBtn">
+                        💾 Update from JSON
+                    </button>
+                    <span id="validationStatus" style="font-size: 0.85rem; margin-left: 10px;"></span>
+                </div>
+                <pre id="output" contenteditable="false" style="outline: none;">// Your BloodHound OpenGraph JSON will appear here...</pre>
+                <div class="actions">
+                    <button class="btn btn-secondary" onclick="copyToClipboard()">Copy to Clipboard</button>
+                    <button class="btn btn-secondary" onclick="downloadJSON()">Download JSON</button>
+                    <button class="btn btn-secondary" onclick="generateCypherQueries()">Generate Cypher Queries</button>
+                </div>
+                <div id="successMessage" style="display: none;"></div>
+                <div id="cypherQueries" style="display: none; margin-top: 20px;">
+                    <h3 style="color: var(--accent-cyan); font-size: 1rem; margin-bottom: 15px;">📊 Cypher Queries for Your Graph</h3>
+                    <div style="background: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: 6px; padding: 20px;">
+                        <pre id="cypherOutput" style="background: transparent; border: none; padding: 0; margin: 0; font-size: 0.85rem; line-height: 1.8;"></pre>
+                    </div>
+                    <button class="btn btn-secondary btn-small" style="margin-top: 15px;" onclick="copyCypherQueries()">Copy All Queries</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let nodes = [];
+        let edges = [];
+
+        function addNode() {
+            const label = document.getElementById('nodeLabel').value.trim();
+            const id = document.getElementById('nodeId').value.trim();
+            const propsText = document.getElementById('nodeProps').value.trim();
+
+            if (!label || !id) {
+                alert('Please enter both node label and ID');
+                return;
+            }
+
+            let properties = {};
+            if (propsText) {
+                try {
+                    properties = JSON.parse(propsText);
+                } catch (e) {
+                    alert('Invalid JSON in node properties');
+                    return;
+                }
+            }
+
+            nodes.push({
+                label: label,
+                objectId: id,
+                properties: properties
+            });
+
+            document.getElementById('nodeLabel').value = '';
+            document.getElementById('nodeId').value = '';
+            document.getElementById('nodeProps').value = '';
+            
+            showMessage(`Node added: ${label} (${id})`);
+            generateJSON();
+        }
+
+        function addEdge() {
+            const source = document.getElementById('edgeSource').value.trim();
+            const target = document.getElementById('edgeTarget').value.trim();
+            const type = document.getElementById('edgeType').value.trim();
+            const propsText = document.getElementById('edgeProps').value.trim();
+
+            if (!source || !target || !type) {
+                alert('Please enter source, target, and relationship type');
+                return;
+            }
+
+            let properties = {};
+            if (propsText) {
+                try {
+                    properties = JSON.parse(propsText);
+                } catch (e) {
+                    alert('Invalid JSON in edge properties');
+                    return;
+                }
+            }
+
+            edges.push({
+                source: source,
+                target: target,
+                type: type,
+                properties: properties
+            });
+
+            document.getElementById('edgeSource').value = '';
+            document.getElementById('edgeTarget').value = '';
+            document.getElementById('edgeType').value = '';
+            document.getElementById('edgeProps').value = '';
+            
+            showMessage(`Edge added: ${source} → ${target} (${type})`);
+            generateJSON();
+        }
+
+        function generateJSON() {
+            const name = document.getElementById('name').value || 'BloodHound Graph';
+            const version = parseInt(document.getElementById('version').value) || 5;
+
+            const graphData = {
+                graph: {
+                    nodes: nodes.map(node => ({
+                        id: node.objectId,
+                        kinds: [node.label],
+                        properties: {
+                            ...node.properties,
+                            objectid: node.objectId,
+                            name: node.properties.name || node.label
+                        }
+                    })),
+                    edges: edges.map(edge => ({
+                        kind: edge.type,
+                        start: {
+                            match_by: "id",
+                            value: edge.source
+                        },
+                        end: {
+                            match_by: "id",
+                            value: edge.target
+                        },
+                        properties: edge.properties
+                    }))
+                }
+            };
+
+            document.getElementById('output').textContent = JSON.stringify(graphData, null, 2);
+        }
+
+        function resetForm() {
+            nodes = [];
+            edges = [];
+            document.getElementById('name').value = '';
+            document.getElementById('version').value = '5';
+            document.getElementById('output').textContent = '// Your BloodHound OpenGraph JSON will appear here...';
+            showMessage('Form reset');
+        }
+
+        function copyToClipboard() {
+            const output = document.getElementById('output').textContent;
+            if (output.includes('will appear here')) {
+                alert('Generate JSON first');
+                return;
+            }
+            navigator.clipboard.writeText(output);
+            showMessage('Copied to clipboard!');
+        }
+
+        function downloadJSON() {
+            const output = document.getElementById('output').textContent;
+            if (output.includes('will appear here')) {
+                alert('Generate JSON first');
+                return;
+            }
+
+            const blob = new Blob([output], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'bloodhound-opengraph.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showMessage('JSON file downloaded!');
+        }
+
+        function showMessage(text) {
+            const msgDiv = document.getElementById('successMessage');
+            msgDiv.textContent = text;
+            msgDiv.className = 'success-message';
+            msgDiv.style.display = 'block';
+            
+            setTimeout(() => {
+                msgDiv.style.display = 'none';
+            }, 3000);
+        }
+
+        function generateCypherQueries() {
+            if (nodes.length === 0 && edges.length === 0) {
+                alert('Please add some nodes and edges first!');
+                return;
+            }
+
+            let queries = [];
+            
+            // Header
+            queries.push('// ==================================================');
+            queries.push('// CYPHER QUERIES FOR YOUR BLOODHOUND OPENGRAPH');
+            queries.push('// ==================================================');
+            queries.push('// Copy and paste these into BloodHound: Explore → Cypher');
+            queries.push('');
+            
+            // Basic queries
+            queries.push('// 1. SHOW ALL YOUR NODES');
+            queries.push('MATCH (n) WHERE n.objectid IN [' + 
+                nodes.map(n => `"${n.objectId}"`).join(', ') + ']');
+            queries.push('RETURN n');
+            queries.push('');
+            
+            queries.push('// 2. SHOW ALL YOUR RELATIONSHIPS');
+            queries.push('MATCH p=(a)-[r]->(b)');
+            queries.push('WHERE a.objectid IN [' + 
+                nodes.map(n => `"${n.objectId}"`).join(', ') + ']');
+            queries.push('RETURN p');
+            queries.push('');
+            
+            // Queries by node kind
+            const uniqueKinds = [...new Set(nodes.map(n => n.label))];
+            if (uniqueKinds.length > 0) {
+                queries.push('// 3. FIND NODES BY KIND');
+                uniqueKinds.forEach(kind => {
+                    queries.push(`// Find all "${kind}" nodes:`);
+                    queries.push(`MATCH (n:${kind}) RETURN n`);
+                    queries.push('');
+                });
+            }
+            
+            // Queries by relationship type
+            const uniqueEdgeTypes = [...new Set(edges.map(e => e.type))];
+            if (uniqueEdgeTypes.length > 0) {
+                queries.push('// 4. FIND SPECIFIC RELATIONSHIPS');
+                uniqueEdgeTypes.forEach(type => {
+                    queries.push(`// Find all "${type}" relationships:`);
+                    queries.push(`MATCH p=(a)-[r:${type}]->(b) RETURN p`);
+                    queries.push('');
+                });
+            }
+            
+            // Specific node queries
+            if (nodes.length > 0) {
+                queries.push('// 5. FIND SPECIFIC NODES BY ID');
+                nodes.forEach(node => {
+                    const name = node.properties.name || node.label;
+                    queries.push(`// Find "${name}":`);
+                    queries.push(`MATCH (n {objectid: "${node.objectId}"}) RETURN n`);
+                    queries.push('');
+                });
+            }
+            
+            // Path queries
+            if (edges.length > 0) {
+                queries.push('// 6. FIND PATHS BETWEEN SPECIFIC NODES');
+                const sampleEdge = edges[0];
+                queries.push(`// Example: Path from ${sampleEdge.source} to ${sampleEdge.target}:`);
+                queries.push(`MATCH p=shortestPath((a {objectid: "${sampleEdge.source}"})-[*1..5]->(b {objectid: "${sampleEdge.target}"}))`);
+                queries.push('RETURN p');
+                queries.push('');
+            }
+            
+            // Property-based searches
+            queries.push('// 7. SEARCH BY PROPERTIES');
+            queries.push('// Find nodes with specific property values:');
+            queries.push('// MATCH (n) WHERE n.property_name = "value" RETURN n');
+            queries.push('');
+            
+            // Advanced queries
+            queries.push('// 8. COUNT YOUR NODES AND RELATIONSHIPS');
+            queries.push('MATCH (n) WHERE n.objectid IN [' + 
+                nodes.map(n => `"${n.objectId}"`).join(', ') + ']');
+            queries.push('RETURN count(n) as NodeCount');
+            queries.push('');
+            
+            queries.push('// 9. FIND ALL OUTGOING CONNECTIONS FROM A NODE');
+            if (nodes.length > 0) {
+                queries.push(`// Example using first node (${nodes[0].objectId}):`);
+                queries.push(`MATCH p=(n {objectid: "${nodes[0].objectId}"})-[r]->(m)`);
+                queries.push('RETURN p');
+                queries.push('');
+            }
+            
+            queries.push('// 10. FIND ALL INCOMING CONNECTIONS TO A NODE');
+            if (nodes.length > 0) {
+                queries.push(`// Example using first node (${nodes[0].objectId}):`);
+                queries.push(`MATCH p=(m)-[r]->(n {objectid: "${nodes[0].objectId}"})`);
+                queries.push('RETURN p');
+            }
+            
+            document.getElementById('cypherOutput').textContent = queries.join('\n');
+            document.getElementById('cypherQueries').style.display = 'block';
+            
+            // Scroll to queries
+            document.getElementById('cypherQueries').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            showMessage('Cypher queries generated!');
+        }
+
+        function copyCypherQueries() {
+            const queries = document.getElementById('cypherOutput').textContent;
+            navigator.clipboard.writeText(queries);
+            showMessage('Cypher queries copied to clipboard!');
+        }
+
+        let isEditMode = false;
+
+        function toggleEditMode() {
+            const output = document.getElementById('output');
+            const editBtn = document.getElementById('editModeBtn');
+            const validateBtn = document.getElementById('validateBtn');
+            const updateBtn = document.getElementById('updateBtn');
+            const editWarning = document.getElementById('editWarning');
+            
+            isEditMode = !isEditMode;
+            
+            if (isEditMode) {
+                output.contentEditable = 'true';
+                editBtn.textContent = '🔒 Disable Editing';
+                editBtn.style.background = 'linear-gradient(135deg, var(--accent-red), var(--accent-purple))';
+                validateBtn.style.display = 'inline-block';
+                updateBtn.style.display = 'inline-block';
+                editWarning.style.display = 'block';
+                showMessage('Edit mode enabled - you can now modify the JSON directly');
+            } else {
+                output.contentEditable = 'false';
+                editBtn.textContent = '📝 Enable Editing';
+                editBtn.style.background = '';
+                validateBtn.style.display = 'none';
+                updateBtn.style.display = 'none';
+                editWarning.style.display = 'none';
+                document.getElementById('validationStatus').textContent = '';
+            }
+        }
+
+        function validateJSON() {
+            const output = document.getElementById('output').textContent;
+            const statusElement = document.getElementById('validationStatus');
+            
+            try {
+                const parsed = JSON.parse(output);
+                
+                // Validate structure
+                const errors = [];
+                
+                if (!parsed.graph) {
+                    errors.push('Missing "graph" object');
+                }
+                
+                if (!parsed.graph.nodes || !Array.isArray(parsed.graph.nodes)) {
+                    errors.push('Missing or invalid "nodes" array');
+                }
+                
+                if (!parsed.graph.edges || !Array.isArray(parsed.graph.edges)) {
+                    errors.push('Missing or invalid "edges" array');
+                }
+                
+                // Validate nodes
+                if (parsed.graph.nodes) {
+                    parsed.graph.nodes.forEach((node, index) => {
+                        if (!node.id) {
+                            errors.push(`Node ${index}: Missing "id"`);
+                        }
+                        if (!node.kinds || !Array.isArray(node.kinds) || node.kinds.length === 0) {
+                            errors.push(`Node ${index}: Missing or invalid "kinds"`);
+                        }
+                        if (node.properties && !node.properties.objectid) {
+                            errors.push(`Node ${index}: Missing "objectid" in properties`);
+                        }
+                        if (node.properties && node.id !== node.properties.objectid) {
+                            errors.push(`Node ${index}: "id" must match "properties.objectid"`);
+                        }
+                    });
+                }
+                
+                // Validate edges
+                if (parsed.graph.edges) {
+                    parsed.graph.edges.forEach((edge, index) => {
+                        if (!edge.kind) {
+                            errors.push(`Edge ${index}: Missing "kind"`);
+                        }
+                        // Check for spaces in edge kind (common error)
+                        if (edge.kind && edge.kind.includes(' ')) {
+                            errors.push(`Edge ${index}: "kind" contains spaces ("${edge.kind}"). Use PascalCase (e.g., "CanAccess")`);
+                        }
+                        // Check for dashes in edge kind
+                        if (edge.kind && edge.kind.includes('-')) {
+                            errors.push(`Edge ${index}: "kind" contains dashes ("${edge.kind}"). Use PascalCase (e.g., "CanAccess")`);
+                        }
+                        if (!edge.start || !edge.start.value) {
+                            errors.push(`Edge ${index}: Missing "start.value"`);
+                        }
+                        if (!edge.end || !edge.end.value) {
+                            errors.push(`Edge ${index}: Missing "end.value"`);
+                        }
+                    });
+                }
+                
+                if (errors.length > 0) {
+                    statusElement.className = 'validation-error';
+                    statusElement.textContent = '❌ Validation errors: ' + errors.join('; ');
+                    alert('Validation Errors:\n\n' + errors.join('\n'));
+                    return false;
+                } else {
+                    statusElement.className = 'validation-success';
+                    statusElement.textContent = '✅ Valid BloodHound OpenGraph JSON!';
+                    showMessage('JSON is valid!');
+                    return true;
+                }
+                
+            } catch (e) {
+                statusElement.className = 'validation-error';
+                statusElement.textContent = '❌ Invalid JSON: ' + e.message;
+                alert('JSON Parse Error:\n\n' + e.message);
+                return false;
+            }
+        }
+
+        function updateFromJSON() {
+            if (!validateJSON()) {
+                return;
+            }
+            
+            const output = document.getElementById('output').textContent;
+            
+            try {
+                const parsed = JSON.parse(output);
+                
+                // Clear current data
+                nodes = [];
+                edges = [];
+                
+                // Extract nodes
+                if (parsed.graph.nodes) {
+                    parsed.graph.nodes.forEach(node => {
+                        // Extract the label from kinds array
+                        const label = node.kinds[0];
+                        
+                        // Create a copy of properties, excluding objectid and name which we handle separately
+                        const properties = {};
+                        if (node.properties) {
+                            for (const [key, value] of Object.entries(node.properties)) {
+                                if (key !== 'objectid' && key !== 'name') {
+                                    properties[key] = value;
+                                }
+                            }
+                            // Keep the name if it exists
+                            if (node.properties.name) {
+                                properties.name = node.properties.name;
+                            }
+                        }
+                        
+                        nodes.push({
+                            label: label,
+                            objectId: node.id,
+                            properties: properties
+                        });
+                    });
+                }
+                
+                // Extract edges
+                if (parsed.graph.edges) {
+                    parsed.graph.edges.forEach(edge => {
+                        edges.push({
+                            source: edge.start.value,
+                            target: edge.end.value,
+                            type: edge.kind,
+                            properties: edge.properties || {}
+                        });
+                    });
+                }
+                
+                showMessage(`✅ Synced! Loaded ${nodes.length} nodes and ${edges.length} edges. You can now use the form to add more.`);
+                
+                // Regenerate to show in proper format with the synced data
+                generateJSON();
+                
+            } catch (e) {
+                alert('Error updating from JSON:\n\n' + e.message);
+            }
+        }
+    </script>
+</body>
+</html>
