@@ -14,6 +14,7 @@ The primary use case for this application is to be able to create a graph of att
   - Hardware Device Attack Paths
   - Recreating an attack path from memory if you lost access to your BloodHound instance/data
   - Literally anything you can think of
+
 By manually creating nodes and edges for the above scenarios, you can include map screenshots of attack paths in reports or client slide decks for presentations of findings after the conclusion of an engagement.
 
 ### How to Use
