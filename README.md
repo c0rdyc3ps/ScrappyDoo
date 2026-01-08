@@ -31,7 +31,7 @@ The web app is pretty simple:
 
 ### BloodHound Sample Physical Attack Path
   - All BloodHound data was created with the above pictured web app UI
-  - This attack path graphs the attack path for a physical attack path which cannot be obtained by a traditional collector
+  - This graph maps the attack path for a physical assessment which cannot be obtained by a traditional collector for obvious reasons
 
 ![sample-attack-path](screenshots/demo-attack-path.png)
 
