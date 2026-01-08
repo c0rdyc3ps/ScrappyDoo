@@ -45,3 +45,11 @@ There are a few issues:
   - Some of the generated cypher queries might not work
   - To query full attack paths in BloodHound, you need to make sure the `"isTraversable" : true` property is included on the edge
   - You will need to create your own icons file to have the node icons populate in BloodHound (sample included in repo for the shown attack path)
+
+### How to Upload Icon Data (Easiest Way)
+Follow these steps:
+  - Navigate to "API Explorer" in BloodhHound
+  - Search for the POST API "/api/v2/custom-nodes"
+  - Click "Try it out"
+  - Paste JSON icon data into the box
+  - Click "Execute"
