@@ -25,6 +25,16 @@ The web app is pretty simple:
   - Upload to BloodHound
   - Use custom cypher queries to query your data
 
+### Web App UI
+
+![web-ui](screenshots/web-ui.png)
+
+### BloodHound Sample Physical Attack Path
+  - All BloodHound data was created with the above pictured web app UI
+  - This attack path graphs the attack path for a physical attack path which cannot be obtained by a traditional collector
+
+![sample-attack-path](screenshots/demo-attack-path.png)
+
 ### Extra Functionality
 There are a handful of extra functionalites:
   - Generate cypher queries (hit and miss)
@@ -34,3 +44,4 @@ There are a handful of extra functionalites:
 There are a few issues:
   - Some of the generated cypher queries might not work
   - To query full attack paths in BloodHound, you need to make sure the `"isTraversable" : true` property is included on the edge
+  - You will need to create your own icons file to have the node icons populate in BloodHound (sample included in repo for the shown attack path)
