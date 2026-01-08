@@ -39,6 +39,7 @@ The web app is pretty simple:
 There are a handful of extra functionalites:
   - Generate cypher queries (hit and miss)
   - Edit JSON in the web app after it is generated in case of a typo or whatever else requires editing
+  - Direct download of JSON data
 
 ### Known Issues
 There are a few issues:
