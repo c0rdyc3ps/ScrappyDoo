@@ -5,7 +5,7 @@ Opengraph-Compatible JSON Generator for BloodHound
 ScrappyDoo is a very simple self-hosted web app that can be used to generate BloodHound Opengraph-compatible JSON that can be mapped using BloodHound CE.
 
 ### Why is it called ScrappyDoo?
-If SharpHound is ScoobyDoo, this extremely simplistic JSON-generating web application is ScoobyDoo's nephew (ScrappyDoo). Diehard ScoodyDoo fans (which is apparently a thing) all thought ScrappyDoo was a crap character, and this is a crap web app. So it made sense.
+If SharpHound is ScoobyDoo, this extremely simplistic JSON-generating web application is ScoobyDoo's nephew (ScrappyDoo). Diehard ScoodyDoo fans (which apparently exist) all thought ScrappyDoo was a crap character, and this is a crap web app. So it made sense.
 
 ### Use Cases
 The primary use case for this application is to be able to create a graph of attack paths that cannot be collected using SharpHound or any other Opengraph collector. Such paths include:
