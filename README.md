@@ -8,14 +8,14 @@ ScrappyDoo is a very simple self-hosted web app that can be used to generate Blo
 If SharpHound is ScoobyDoo, this extremely simplistic JSON-generating web application is ScoobyDoo's nephew (ScrappyDoo). Diehard ScoodyDoo fans (which apparently exist) all thought ScrappyDoo was a crap character, and this is a crap web app. So it made sense.
 
 ### Use Cases
-The primary use case for this application is to be able to create a graph of attack paths that cannot be collected using SharpHound or any other Opengraph collector. This is especially helpful for reporting purposes and client slide decks during post-assessment debrief phases. Such paths include:
+The primary use case for this application is to be able to create a graph of attack paths that cannot be collected using SharpHound or any other Opengraph collector. Such paths include:
   - Physical Attack Paths
   - Web Application Attack Paths
   - Hardware Device Attack Paths
   - Recreating an attack path from memory if you lost access to your BloodHound instance/data
   - Literally anything you can think of
 
-By manually creating nodes and edges for the above scenarios, you can include map screenshots of attack paths in reports or client slide decks for presentations of findings after the conclusion of an engagement.
+By manually creating nodes and edges for the above scenarios, you can include graphed attack path screenshots in reports or client slide decks for presentations after the conclusion of an engagement, which tend to be particularly impactful when presenting to higher-level non-technical individuals. 
 
 ### How to Use
 The web app is pretty simple:
