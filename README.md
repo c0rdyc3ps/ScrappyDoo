@@ -19,6 +19,7 @@ By manually creating nodes and edges for the above scenarios, you can include gr
 
 ### How to Use
 The web app is pretty simple:
+  - Open HTML file in a browser
   - Create your nodes (objects)
   - Created your edges (relationships between objects)
   - Download the JSON
