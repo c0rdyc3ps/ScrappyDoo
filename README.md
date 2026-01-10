@@ -21,7 +21,7 @@ By manually creating nodes and edges for the above scenarios, you can include gr
 The web app is pretty simple:
   - Open HTML file in a browser
   - Create your nodes (objects)
-  - Created your edges (relationships between objects)
+  - Create your edges (relationships between objects)
   - Download the JSON
   - Upload to a BloodHound instance with no other data (makes it easier to see with no other noise, but do what you want)
   - Use custom cypher queries to query your data
@@ -56,3 +56,11 @@ Follow these steps:
   - Click "Try it out"
   - Paste JSON icon data into the box
   - Click "Execute"
+
+---
+
+# TODO:
+- Add funtionality to web app to generate an icons file for nodes
+- Fix the cyper query functionality
+  - Will likely remove this and just have it show the `MATCH p=()-[]->() RETURN p` query for "Show All Relationships"
+- Make it less ugly
