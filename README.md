@@ -23,7 +23,7 @@ The web app is pretty simple:
   - Create your nodes (objects)
   - Created your edges (relationships between objects)
   - Download the JSON
-  - Upload to BloodHound
+  - Upload to a BloodHound instance with no other data (makes it easier to see with no other noise, but do what you want)
   - Use custom cypher queries to query your data
 
 ### Web App UI
