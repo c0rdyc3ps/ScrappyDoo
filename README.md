@@ -45,6 +45,7 @@ There are a handful of extra functionalites:
 ### Known Issues
 There are a few issues:
   - Some of the generated cypher queries might not work
+    - The easiest way to view your created attack path is to run this query: `MATCH p=()-[]->() RETURN p`
   - To query full attack paths in BloodHound, you need to make sure the `"isTraversable" : true` property is included on the edge
   - You will need to create your own icons file to have the node icons populate in BloodHound (sample included in repo for the shown attack path)
 
