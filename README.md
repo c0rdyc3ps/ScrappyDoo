@@ -33,6 +33,7 @@ The web app is pretty simple:
 ### BloodHound Sample Physical Attack Path
   - All BloodHound data was created with the above pictured web app UI
   - This graph maps the attack path for a physical assessment which cannot be obtained by a traditional collector for obvious reasons
+  - Attack path JSON file (nodes and edges) and icons JSON file are included in this repo for testing out on your own
 
 ![sample-attack-path](screenshots/demo-attack-path.png)
 
