@@ -57,6 +57,7 @@ Follow these steps:
   - Click "Try it out"
   - Paste JSON icon data into the box
   - Click "Execute"
+  -  **NOTE:** When creating an icons file, use `font-awesome` types (https://fontawesome.com/search#icongrid)
 
 ---
 
