@@ -8,8 +8,7 @@
         ],
         "properties": {
           "name": "steve",
-          "org": "badguys",
-          "objectid": "steve@badguys"
+          "org": "badguys"
         }
       },
       {
@@ -20,8 +19,7 @@
         "properties": {
           "name": "lobby",
           "org": "targetcompany",
-          "floor": "first",
-          "objectid": "lobby@targetcompany"
+          "floor": "first"
         }
       },
       {
@@ -32,8 +30,7 @@
         "properties": {
           "name": "elevator",
           "org": "targetcompany",
-          "location": "lobby",
-          "objectid": "elevator@targetcompany"
+          "location": "lobby"
         }
       },
       {
@@ -44,8 +41,7 @@
         "properties": {
           "name": "fifth floor",
           "org": "targetcompany",
-          "floor": "five",
-          "objectid": "fifthfloor@targetcompany"
+          "floor": "five"
         }
       },
       {
@@ -56,8 +52,7 @@
         "properties": {
           "name": "sixth floor",
           "org": "targetcompany",
-          "floor": "six",
-          "objectid": "sixthfloor@targetcompany"
+          "floor": "six"
         }
       },
       {
@@ -68,8 +63,7 @@
         "properties": {
           "name": "seventh floor",
           "org": "targetcompany",
-          "floor": "seven",
-          "objectid": "seventhfloor@targetcompany"
+          "floor": "seven"
         }
       },
       {
@@ -80,8 +74,7 @@
         "properties": {
           "name": "eighth floor",
           "org": "targetcompany",
-          "floor": "eight",
-          "objectid": "eighthfloor@targetcompany"
+          "floor": "eight"
         }
       },
       {
@@ -90,8 +83,7 @@
           "utdtool"
         ],
         "properties": {
-          "name": "under the door tool",
-          "objectid": "utdtool@badguys"
+          "name": "under the door tool"
         }
       },
       {
@@ -101,8 +93,7 @@
         ],
         "properties": {
           "name": "seventh floor server room",
-          "org": "targetcompany",
-          "objectid": "serverroom@targetcompany"
+          "org": "targetcompany"
         }
       },
       {
@@ -112,8 +103,7 @@
         ],
         "properties": {
           "name": "server room door",
-          "org": "targetcompany",
-          "objectid": "serverroomdoor@targetcompany"
+          "org": "targetcompany"
         }
       },
       {
@@ -123,8 +113,7 @@
         ],
         "properties": {
           "name": "server",
-          "org": "targetcompany",
-          "objectid": "server@targetcompany"
+          "org": "targetcompany"
         }
       }
     ],
@@ -167,7 +156,7 @@
         },
         "end": {
           "match_by": "id",
-          "value": "fifthfloor@targetcompan"
+          "value": "fifthfloor@targetcompany"
         },
         "properties": {
           "description": "elevator can access fifth floor",
