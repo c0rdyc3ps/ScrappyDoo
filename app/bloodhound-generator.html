@@ -508,7 +508,6 @@
                         kinds: [node.label],
                         properties: {
                             ...node.properties,
-                            objectid: node.objectId,
                             name: node.properties.name || node.label
                         }
                     })),
@@ -755,12 +754,6 @@
                         }
                         if (!node.kinds || !Array.isArray(node.kinds) || node.kinds.length === 0) {
                             errors.push(`Node ${index}: Missing or invalid "kinds"`);
-                        }
-                        if (node.properties && !node.properties.objectid) {
-                            errors.push(`Node ${index}: Missing "objectid" in properties`);
-                        }
-                        if (node.properties && node.id !== node.properties.objectid) {
-                            errors.push(`Node ${index}: "id" must match "properties.objectid"`);
                         }
                     });
                 }
